@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="my.css" rel="stylesheet" />
+    <title>MyLittleJewels – Bijoux Premium</title>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="mylittlejewels.html">Accueil</a>
+    <a href="bestseller.html">Best Sellers</a>
+    <a href="nosbijoux.html">Nos Bijoux</a>
+    <a href="vinted.html">Vinted</a>
+    <a href="panier.html">panier🛒</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay">
+        <h1>Élégance. Minimalisme. Lumière.</h1>
+        <p>Des bijoux fins créés pour sublimer chaque moment.</p>
+        <a class="btn" href="nosbijoux.html">Voir la collection</a>
+    </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection">
+    <h2>Nouvelle Collection</h2>
+
+    <div class="grid">
+
+        <div class="item">
+            <img src="jonc1.jpg" />
+            <h3>Jonc Cassandre</h3>
+            <p class="price">12€</p>
+            <button onclick="addToCart('Jonc Cassandre', 12)">Ajouter au panier</button>
+        </div>
+
+        <div class="item">
+            <img src="sautoir.jpg" />
+            <h3>Sautoir Amelia</h3>
+            <p class="price">18€</p>
+            <button onclick="addToCart('Sautoir Amelia', 18)">Ajouter au panier</button>
+        </div>
+
+        <div class="item">
+            <img src="jonc2.jpg" />
+            <h3>Jonc Fleur</h3>
+            <p class="price">11€</p>
+            <button onclick="addToCart('Jonc Fleur', 11)">Ajouter au panier</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <h2>MyLittleJewels</h2>
+            <p>Bijoux faits main avec amour</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Liens rapides</h3>
+            <ul>
+                <li><a href="mylittlejewels.html">Accueil</a></li>
+                <li><a href="bestseller.html">Best Sellers</a></li>
+                <li><a href="nosbijoux.html">Nos Bijoux</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h3>Suivez-nous</h3>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">TikTok</a>
+            <a href="#" target="_blank">Pinterest</a>
+        </div>
+
+        <div class="footer-legal">
+            <p>&copy; 2025 MyLittleJewels | <a href="#">Mentions légales</a> | <a href="#">CGV</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- COOKIES -->
+<div id="cookie-banner" class="cookie-banner">
+    <p>Nous utilisons des cookies pour améliorer votre expérience. 
+    <a href="#">En savoir plus</a></p>
+    <button onclick="acceptCookies()">J’accepte</button>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push({name, price});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Article ajouté au panier !");
+}
+
+if (!localStorage.getItem("cookies_accepted")) {
+    document.getElementById("cookie-banner").style.display = "flex";
+}
+
+function acceptCookies() {
+    localStorage.setItem("cookies_accepted", "yes");
+    document.getElementById("cookie-banner").style.display = "none";
+}
+</script>
+
+</body>
+</html>

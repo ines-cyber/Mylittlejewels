@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nos Bijoux – MyLittleJewels</title>
+    <link rel="stylesheet" href="my.css">
+</head>
+<body>
+<header>
+     <nav>
+    <a href="mylittlejewels.html">Accueil</a>
+    <a href="bestseller.html">Best Sellers</a>
+    <a href="nosbijoux.html">Nos Bijoux</a>
+        <a href="vinted.html">Vinted</a>
+         <a href="panier.html">panier🛒</a>
+</nav>
+
+</header>
+
+<section class="collection">
+    <h2>Nos Bijoux</h2>
+        <div class="item">
+          <img src="jonc1.jpg" width="300" />
+
+            <h3>jonc cassandre</h3>
+            <p class="price">12€</p>
+            <button onclick="addToCart('Jonc cassandre', 29.90)">Ajouter au panier</button>
+        </div>
+
+  <div class="item">
+      <img src="sautoir.jpg" width="300" />
+            <h3>Sautoir Amelia</h3>
+            <p class="price">18 €</p>
+            <button onclick="addToCart('Sautoir amelia', 18)">Ajouter au panier</button>
+        </div>
+       <div class="item">
+                  <img src="jonc2.jpg" width="300" />
+            <h3>jonc fleur</h3>
+            <p class="price">11€</p>
+            <button onclick="addToCart('Jonc fleur', 11)">Ajouter au panier</button>
+        </div>
+         <div class="item">
+              <img src="star.jpg" width="300" />
+            <h3> Collier Star</h3>
+            <p class="price">13€</p>
+            <button onclick="addToCart('Collier star', 13)">Ajouter au panier</button>
+        </div>
+        <div class="item">
+             <img src="bague1.jpg" width="500" />
+            <h3>Bague Breloque</h3>
+            <p class="price">9 €</p>
+            <button onclick="addToCart('Bague Breloque', 9)">Ajouter au panier</button>
+        </div>
+  <div class="item">
+             <img src="Y.jpg" width="500" />
+            <h3>Collier Y ines</h3>
+            <p class="price">14€</p>
+            <button onclick="addToCart('Collier Y ines',14)">Ajouter au panier</button>
+        </div>
+ <div class="item">
+             <img src="jonclea.jpg" width="500" />
+            <h3>Jonc Lea</h3>
+            <p class="price">12€</p>
+            <button onclick="addToCart('Jonc Lea',12)">Ajouter au panier</button>
+        </div>
+
+</section>
+
+<script>
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push({name, price});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Ajouté au panier !");
+}
+</script>
+
+</body>
+</html>

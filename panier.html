@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="my.css" rel="stylesheet" />
+    <title>Panier - MyLittleJewels</title>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="mylittlejewels.html">Accueil</a>
+    <a href="bestseller.html">Best Sellers</a>
+    <a href="nosbijoux.html">Nos Bijoux</a>
+    <a href="vinted.html">Vinted</a>
+
+    <!-- Bouton Panier spécial avec compteur -->
+    <button id="cart-btn" onclick="window.location.href='panier.html'">
+        <span id="cart-icon">🛒</span> 
+        Panier (<span id="cart-quantity">0</span>)
+    </button>
+</nav>
+
+<!-- PANIER -->
+<section class="cart">
+    <h2>Votre Panier</h2>
+    
+    <div id="cart-items"></div> <!-- Les produits ajoutés seront affichés ici -->
+
+    <button onclick="proceedToVinted()">Acheter sur Vinted</button> <!-- Redirection vers Vinted -->
+</section>
+
+<!-- SCRIPT -->
+<script>
+// Vérifier si le panier existe dans le localStorage
+let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+// Afficher les éléments du panier
+function displayCart() {
+    let cartItemsContainer = document.getElementById("cart-items");
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p>Votre panier est vide.</p>";
+    } else {
+        cartItemsContainer.innerHTML = ""; // Vider le contenu avant de rajouter les produits
+        cart.forEach(item => {
+            let itemDiv = document.createElement("div");
+            itemDiv.classList.add("cart-item");
+            itemDiv.innerHTML = `
+                <p>${item.name}</p>
+                <p>${item.price} €</p>
+            `;
+            cartItemsContainer.appendChild(itemDiv);
+        });
+    }
+}
+
+// Fonction pour rediriger vers ton compte Vinted lors de l'achat
+function proceedToVinted() {
+    if (cart.length === 0) {
+        alert("Votre panier est vide. Ajoutez des produits avant de passer à l'achat.");
+    } else {
+        // Redirection vers ton compte Vinted
+        window.location.href = "https://www.vinted.pt/member/278230321-mylittlejewelss";
+    }
+}
+
+// Mettre à jour le compteur de quantité dans le bouton Panier
+function updateCartQuantity() {
+    let cartQuantity = cart.length;
+    document.getElementById("cart-quantity").innerText = cartQuantity;
+}
+
+// Met à jour la quantité au chargement de la page
+updateCartQuantity();
+
+// Fonction pour ajouter un produit au panier
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push({name, price});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    
+    // Met à jour le nombre d'articles dans le panier
+    updateCartQuantity();
+    alert("Article ajouté au panier !");
+}
+
+// Initialiser l'affichage du panier
+displayCart();
+</script>
+
+</body>
+</html>
